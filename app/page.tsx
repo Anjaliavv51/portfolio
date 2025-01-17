@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import { FloatingNav } from "@/components/ui/floating-navbar";
-import { FaHome } from "react-icons/fa";
+import BentoGrid from "@/components/Grid";
+import { navItems } from "@/data";
 
 export default function Home() {
   return (
@@ -9,11 +10,10 @@ export default function Home() {
     mx-auto sm:px-10 px-5">
       <div className="max-w-7xl w-full">
         <FloatingNav
-          navItems={[
-            {name: "Home", link: "/" ,icon:<FaHome/>}
-          ]}
+          navItems={navItems}
         />
         <Hero/>
+        <BentoGrid/>
       </div>
     </main>
   );
