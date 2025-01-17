@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import { Spotlight } from './ui/Spotlight'
 import { TextGenerateEffect } from './ui/TextGenerateEffect'
@@ -30,6 +31,11 @@ const Hero = () => {
         lg:max-w-[60vw] flex flex-col items-center
         justify-center'> 
         <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
+        <img
+            src="/dp.jpg"
+            alt="profile-pic"
+            className="rounded-full w-80 h-80 border-2 border-white-100 mb-5"
+          />
             <h1 className='uppercase tracking-widest
             text-xs text-center text-blue-100 max-w-80'>
                 PAMIDI LAKSHMI PAVANANJALI
