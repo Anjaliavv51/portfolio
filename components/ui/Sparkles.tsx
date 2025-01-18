@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useId} from "react";
 import { useEffect, useState } from "react";
@@ -32,7 +31,7 @@ export const SparklesCore = (props: ParticlesProps) => {
   } = props;
   const [init, setInit] = useState(false);
   useEffect(() => {
-    initParticlesEngine(async (engine) => {
+    initParticlesEngine(async (engine: any) => {
       await loadSlim(engine);
     }).then(() => {
       setInit(true);
