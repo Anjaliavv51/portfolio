@@ -1,18 +1,18 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
-import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three"
+import { Color, Scene, Fog, PerspectiveCamera, Vector3, PointLight } from "three"
 import ThreeGlobe from "three-globe"
-import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber"
-import { OrbitControls } from "@react-three/drei"
+import { useThree, Object3DNode, Canvas, extend} from "@react-three/fiber"
+import { OrbitControls, SpotLight } from "@react-three/drei"
 import countries from "@/data/globe.json"
 
+extend({ ThreeGlobe })
 declare module "@react-three/fiber" {
   interface ThreeElements {
     threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>
   }
 }
 
-extend({ ThreeGlobe })
 
 const RING_PROPAGATION_SPEED = 3
 const aspect = 1.2
@@ -256,10 +256,10 @@ export function Globe({ globeConfig, data }: WorldProps) {
     return () => {
       clearInterval(interval)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globeRef.current, globeData])
 
   return (
+    
       <>
         <threeGlobe ref={globeRef} />
       </>
@@ -273,7 +273,6 @@ export function WebGLRendererConfig() {
     gl.setPixelRatio(window.devicePixelRatio)
     gl.setSize(size.width, size.height)
     gl.setClearColor(0xffaaff, 0)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return null
@@ -286,16 +285,16 @@ export function World(props: WorldProps) {
   return (
       <Canvas scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)}>
         <WebGLRendererConfig />
-        <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
-        <directionalLight
+        <SpotLight color={globeConfig.ambientLight} intensity={0.6} />
+        <SpotLight
             color={globeConfig.directionalLeftLight}
             position={new Vector3(-400, 100, 400)}
         />
-        <directionalLight
+        <SpotLight
             color={globeConfig.directionalTopLight}
             position={new Vector3(-200, 500, 200)}
         />
-        <pointLight
+        <SpotLight
             color={globeConfig.pointLight}
             position={new Vector3(-200, 500, 200)}
             intensity={0.8}
