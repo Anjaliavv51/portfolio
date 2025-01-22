@@ -131,7 +131,6 @@ export const BentoGridItem = ({
               {title}
             </div>
 
-            {id === 2 && <GridGlobe />}
             {id === 3 && (
               <>
                 <SparklesCore

@@ -27,8 +27,6 @@
     "react-icons": "^5.4.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.171.0",
-    "three-globe": "^2.35.11"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
